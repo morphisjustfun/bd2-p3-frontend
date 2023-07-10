@@ -25,9 +25,9 @@ export default function ModalCamera({
         }}>
             <Text h2> Take a photo </Text>
             <Webcam videoConstraints={{
-                width: 300,
-                height: 300,
-            }} width={300} height={300} screenshotFormat="image/jpeg" audio={false} ref={webcamRef} style={{
+                width: 250,
+                height: 250,
+            }} width={250} height={250} screenshotFormat="image/jpeg" audio={false} ref={webcamRef} style={{
                 borderRadius: 20,
             }}/>
             <Grid.Container direction="row" justify="center" alignItems="center">
