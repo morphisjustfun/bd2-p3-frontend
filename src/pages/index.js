@@ -108,12 +108,13 @@ export default function Home() {
                                 if (selectedMode === "Sequential KNN") {
                                     const blob = await (await fetch(imageSource)).blob();
                                     formdata.append("image", blob, "image.jpeg");
-                                    formdata.append("k", "6");
+                                    formdata.append(
+                                        "k", k);
                                     formdata.append("distance_metric", "euclidean");
                                 } else {
                                     const blob = await (await fetch(imageSource)).blob();
                                     formdata.append("image", blob, "image.jpeg");
-                                    formdata.append("k", "6");
+                                    formdata.append("k", k);
                                 }
 
                                 var requestOptions = {
