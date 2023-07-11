@@ -130,19 +130,34 @@ export default function Home() {
                                         const response = await fetch("http://129.146.71.229:8000/secuential_knn/", requestOptions);
                                         const data = await response.json();
                                         setTime(data.execution_time);
-                                        setImages(data.k_nearest_neighbors.map((e) => e.path));
+                                        setImages(data.k_nearest_neighbors.map((e) => {
+                                            return {
+                                                path: e.path,
+                                                distance: e.distance,
+                                            }
+                                        }));
                                     }
                                     if (selectedMode === "RTree KNN") {
                                         const response = await fetch("http://129.146.71.229:8000/rtree_knn/", requestOptions);
                                         const data = await response.json();
                                         setTime(data.execution_time);
-                                        setImages(data.k_nearest_neighbors.map((e) => e.path));
+                                        setImages(data.k_nearest_neighbors.map((e) => {
+                                            return {
+                                                path: e.path,
+                                                distance: e.distance,
+                                            }
+                                        }));
                                     }
                                     if (selectedMode === "KDTree KNN") {
                                         const response = await fetch("http://129.146.71.229:8000/kdtree_knn/", requestOptions);
                                         const data = await response.json();
                                         setTime(data.execution_time);
-                                        setImages(data.k_nearest_neighbors.map((e) => e.path));
+                                        setImages(data.k_nearest_neighbors.map((e) => {
+                                            return {
+                                                path: e.path,
+                                                distance: e.distance,
+                                            }
+                                        }));
                                     }
                                 } finally {
                                     setLoading(false);
@@ -191,7 +206,7 @@ export default function Home() {
                                     images.map((e, index) => {
                                         return (
                                             <Grid key={index}>
-                                                <ImageBlock imageUrl={e}/>
+                                                <ImageBlock imageUrl={e.path} distance={e.distance}/>
                                             </Grid>
                                         )
                                     })
